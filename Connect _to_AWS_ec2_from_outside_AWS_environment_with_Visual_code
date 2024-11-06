@@ -1,1 +1,11 @@
+How to connect to an AWS EC2 instance (Ubuntu) from outside the AWS environment (e.g., from Visual Studio Code):
 
+First, install the Remote-SSH extension in VS Code.
+Open the Bash terminal on your local machine.
+Navigate to the directory where your .pem key file is located.
+Set the appropriate permissions for the .pem key using the command:
+chmod 400 <key-name>.pem (Note: Using chmod 777 is not recommended for security reasons. chmod 400 is the standard practice for private key files.)
+Verify the permissions have been applied correctly by running:
+ls -l <key-name>.pem
+Once the permissions are set, run the following command to connect to your EC2 instance:
+ssh -i <key-name>.pem ubuntu@<public_ip_of_ec2_instance>
